@@ -22,7 +22,7 @@ export async function report({ returnCode, logs, slackChannel, icon_url, name, o
 
   const logContent = (function() {
     const lines = logs.join('').split('\n');
-    const lastYarnLine = lines.indexOf('Processing the tree');
+    const lastYarnLine = lines.indexOf('Processing the tree while reporting to slack');
     const remainingLines = lines.slice(lastYarnLine);
     return remainingLines.join('\n');
   })();

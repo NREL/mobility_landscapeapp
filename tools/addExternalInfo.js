@@ -184,7 +184,7 @@ async function main() {
   });
 
   const tree = traverse(landscape);
-  console.info('Processing the tree');
+  console.info('Processing the tree in addExternalInfo');
   const newProcessedLandscape = tree.map(function(node) {
     if (node && node.item === null) {
       //crunchbase

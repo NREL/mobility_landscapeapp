@@ -10,7 +10,7 @@ async function main() {
   const traverse = require('traverse');
   const _ = require('lodash');
 
-  console.info('Processing the tree');
+  console.info('Processing the tree in validateLandscape');
   let errors = [];
   let hasInvalidKeys = false;
 

@@ -1,7 +1,7 @@
 import Promise from 'bluebird';
 import { setFatalError, reportFatalErrors, hasFatalErrors } from './fatalErrors';
 import { projectPath, settings } from './settings';
-console.info('processed', projectPath);
+console.info('processed in generateJson', projectPath);
 const source = require('js-yaml').safeLoad(require('fs').readFileSync(`${projectPath}/processed_landscape.yml`));
 const traverse = require('traverse');
 const _ = require('lodash');
@@ -48,7 +48,7 @@ async function getMembers() {
   console.info(`Fetching members from ${membershipCategoryName} category`);
   const directResult = {};
   const tree = traverse(source);
-  console.info('Processing the tree');
+  console.info('Processing the tree in generateJson');
   tree.map(function(node) {
     if (node && node.category === null && node.name === settings.global.membership) {
       node.subcategories.forEach(function(subcategory) {
