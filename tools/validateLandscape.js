@@ -30,6 +30,8 @@ async function main() {
     'url_for_bestpractices',
     'enduser',
     'open_source',
+    'international',
+    'jurisdictions',
     'allow_duplicate_repo',
     'unnamed_organization',
     'organization'
