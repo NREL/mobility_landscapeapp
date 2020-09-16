@@ -174,14 +174,16 @@ async function main() {
     process.exit(1);
   }
 
-
   console.info('Fetching best practices');
   const savedBestPracticeEntries = await extractSavedBestPracticeEntries();
   const fetchBestPracticeEntries = useBestPracticesCache ? fetchBestPracticeEntriesWithIndividualUrls : fetchBestPracticeEntriesWithFullScan;
+  /*
   const bestPracticeEntries = await fetchBestPracticeEntries({
     cache: savedBestPracticeEntries,
     preferCache: useBestPracticesCache
   });
+  */
+  const bestPracticeEntries = [];
 
   const tree = traverse(landscape);
   console.info('Processing the tree in addExternalInfo');
