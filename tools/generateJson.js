@@ -336,6 +336,7 @@ async function main () {
     require('process').exit(1);
   }
 
+  /*
   var hasEmptyCrunchbase = false;
   await Promise.mapSeries(itemsWithExtraFields, async function(item) {
     if (!item.crunchbaseData) {
@@ -359,6 +360,7 @@ async function main () {
     await reportFatalErrors();
     require('process').exit(1);
   }
+  */
 
   var hasBadHomepage = false;
   await Promise.mapSeries(itemsWithExtraFields, async function(item) {
