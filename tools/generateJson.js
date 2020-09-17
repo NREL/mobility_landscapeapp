@@ -489,6 +489,7 @@ async function main () {
 
 
   // now update membership, only after we've checked crunchbase issues properly
+  /*
   const members = await getMembers();
   _.each(itemsWithExtraFields, function(item) {
     const membership = (function() {
@@ -548,6 +549,7 @@ async function main () {
   if (hasFatalErrors()) {
     process.exit(1);
   }
+  */
 
   const extractOptions = function(name) {
     return _.chain(itemsWithExtraFields).map(function(x) {
@@ -675,8 +677,8 @@ async function main () {
     organization: pack(extractOptions('organization')),
     landscape: pack(generateLandscapeHierarchy()),
     license: pack(generateLicenses()),
-    headquarters: pack(generateHeadquarters()),
-    crunchbaseSlugs: generateCrunchbaseSlugs(),
+    // headquarters: pack(generateHeadquarters()),
+    // crunchbaseSlugs: generateCrunchbaseSlugs(),
     languages: generateLanguages(),
   }
 
