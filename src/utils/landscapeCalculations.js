@@ -2,8 +2,8 @@ import settings from 'project/settings.yml'
 import fields from "../types/fields";
 
 export const itemMargin = 3
-export const smallItemWidth = 34
-export const smallItemHeight = 30
+export const smallItemWidth = 68
+export const smallItemHeight = 60
 export const largeItemWidth = 2 * smallItemWidth + itemMargin
 export const largeItemHeight = 2 * smallItemHeight + itemMargin
 export const subcategoryMargin = 6
@@ -16,12 +16,15 @@ export const headerHeight = 40
 
 // Check if item is large
 const isLargeFn = ({ relation, category, member }) => {
+  return true;
+  /*
   const relationInfo = fields.relation.values.find(({ id }) => id === relation);
   if (category === settings.global.membership) {
     const membershipInfo = settings.membership[member];
     return membershipInfo && !!membershipInfo.is_large;
   }
   return !!relationInfo.big_picture_order;
+  */
 }
 
 // Compute if items are large and/or visible.
