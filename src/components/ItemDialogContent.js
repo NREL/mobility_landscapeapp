@@ -466,7 +466,6 @@ const ItemDialogContent = ({ itemInfo }) => {
             <div className="product-tags">
               <div className="product-badges" style = {{width: Math.min(300, innerWidth - 110)}} >
                 <div style={cellStyle}>{projectTag(itemInfo)}</div>
-                <div style={cellStyle}>{parentTag(itemInfo)}</div>
                 <div style={cellStyle}>{openSourceTag(itemInfo.oss)}</div>
                 <div style={cellStyle}>{licenseTag(itemInfo)}</div>
                 <div style={cellStyle}>{badgeTag(itemInfo)}</div>
@@ -487,7 +486,6 @@ const ItemDialogContent = ({ itemInfo }) => {
             <div className="product-tags">
               <div className="product-badges" style = {{width: 300}} >
                 <div style={cellStyle}>{projectTag(itemInfo)}</div>
-                <div style={cellStyle}>{parentTag(itemInfo)}</div>
                 <div style={cellStyle}>{openSourceTag(itemInfo.oss)}</div>
                 <div style={cellStyle}>{licenseTag(itemInfo)}</div>
                 <div style={cellStyle}>{badgeTag(itemInfo)}</div>
@@ -511,7 +509,6 @@ const ItemDialogContent = ({ itemInfo }) => {
                   </React.Fragment> :
                   <React.Fragment>
                     <div className="product-name">{itemInfo.name}</div>
-                    <div className="product-parent"><InternalLink to={linkToOrganization}><span>{itemInfo.organization}</span>{memberTag(itemInfo)}</InternalLink></div>
                     <div className="product-category">{itemCategory(itemInfo.landscape)}</div>
                     <div className="product-description">{itemInfo.description}</div>
                   </React.Fragment>
