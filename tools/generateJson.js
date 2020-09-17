@@ -489,9 +489,9 @@ async function main () {
 
 
   // now update membership, only after we've checked crunchbase issues properly
-  /*
-  const members = await getMembers();
+  // const members = await getMembers();
   _.each(itemsWithExtraFields, function(item) {
+    /*
     const membership = (function() {
       // direct membership
       const directMembership = _.findKey(members, (v) => v && v.indexOf(getItemMembershipKey(item)) !== -1);
@@ -517,7 +517,8 @@ async function main () {
       }
       return false;
     })();
-    item.member = membership;
+    */
+    item.member = true;
     const {relation, isSubsidiaryProject} = (function() {
       if (item.project) {
         return {relation: item.project, isSubsidiaryProject: false};
@@ -534,6 +535,7 @@ async function main () {
     item.isSubsidiaryProject = isSubsidiaryProject;
   });
 
+  /*
   const hostedCategories = settings.relation.values.filter(({ id }) => id === 'hosted')
     .flatMap(({ children }) => children)
     .map(({ id }) => id)
@@ -677,8 +679,8 @@ async function main () {
     organization: pack(extractOptions('organization')),
     landscape: pack(generateLandscapeHierarchy()),
     license: pack(generateLicenses()),
-    // headquarters: pack(generateHeadquarters()),
-    // crunchbaseSlugs: generateCrunchbaseSlugs(),
+    headquarters: pack([]),
+    crunchbaseSlugs: [],
     languages: generateLanguages(),
   }
 
