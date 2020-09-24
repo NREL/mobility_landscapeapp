@@ -228,6 +228,7 @@ async function main () {
         amount: getAmount(),
         ticker: getTicker(),
         oss: getLicense() !== 'NotOpenSource',
+        hasRepo: node.github_data ? true : false,
         href: `logos/${(node.image_data || {}).fileName}`,
         bestPracticeBadgeId: (node.best_practice_data || {}).badge,
         bestPracticePercentage: (node.best_practice_data || {}).percentage,

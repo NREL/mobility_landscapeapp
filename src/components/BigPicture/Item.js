@@ -58,8 +58,10 @@ const SmallItem = (({ item, onSelectItem }) => {
 })
 
 export default props => {
-  const { isLarge, isVisible, category, oss } = props.item
+  const { isLarge, isVisible, category, oss, hasRepo } = props.item
   const isMember = category === settings.global.membership;
+  const ossColorClass = isMember || oss ? 'oss' : 'nonoss';
+  const colorClass = oss && !hasRepo ? 'norepo' : ossColorClass;
 
   const style = {
     display: 'flex',
@@ -70,7 +72,7 @@ export default props => {
   }
 
   return <Fade timeout={1000} in={isVisible}>
-    <div className={isMember || oss ? 'oss' : 'nonoss'} style={style}>
+    <div className={colorClass} style={style}>
       {isLarge ? <LargeItem {...props} isMember={isMember} /> : <SmallItem {...props} />}
     </div>
   </Fade>
