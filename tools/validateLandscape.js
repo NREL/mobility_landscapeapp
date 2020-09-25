@@ -21,6 +21,7 @@ async function main() {
     'twitter',
     'crunchbase',
     'repo_url',
+    'item_type',
     'privacy',
     'geo_scope',
     'project_org',
