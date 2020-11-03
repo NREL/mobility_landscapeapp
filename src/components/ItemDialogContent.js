@@ -426,6 +426,14 @@ const ItemDialogContent = ({ itemInfo }) => {
       </div>
     </div>
   );
+  const modeElement = itemInfo.mode && (
+    <div className="product-property row">
+      <div className="product-property-name col col-40">Modes</div>
+      <div className="product-property-value tight-col col-60">
+          {itemInfo.mode.join(", ")}
+      </div>
+    </div>
+  );
   const latestCommitDateElement =  itemInfo.latestCommitDate && (
     <div className="product-property row">
       <div className="product-property-name col col-50">Latest Commit</div>
@@ -588,6 +596,7 @@ const ItemDialogContent = ({ itemInfo }) => {
                     { crunchbaseEmployeesElement }
                     { amountElement }
                     { tickerElement }
+                    { modeElement }
                   </div> }
                   { innerWidth > 1000 && <div className="col col-50">
                     { twitterElement }
@@ -596,6 +605,7 @@ const ItemDialogContent = ({ itemInfo }) => {
                     { headquartersElement }
                     { amountElement }
                     { tickerElement }
+                    { modeElement }
                   </div>
                   }
                   { innerWidth > 1000 && <div className="col col-50">
