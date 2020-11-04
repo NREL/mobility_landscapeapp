@@ -434,6 +434,42 @@ const ItemDialogContent = ({ itemInfo }) => {
       </div>
     </div>
   );
+  const dataDurationElement = itemInfo.data_details.duration && (
+    <div className="product-property row">
+      <div className="product-property-name col col-40">Data Duration</div>
+      <div className="product-property-value tight-col col-60">
+          {itemInfo.data_details.duration}
+      </div>
+    </div>
+  );
+
+  const dataFrequencyElement = itemInfo.data_details.frequency && (
+    <div className="product-property row">
+      <div className="product-property-name col col-40">Data Duration</div>
+      <div className="product-property-value tight-col col-60">
+          {itemInfo.data_details.duration}
+      </div>
+    </div>
+  );
+
+  const dataOwnerElement = itemInfo.data_details.owner && (
+    <div className="product-property row">
+      <div className="product-property-name col col-40">Data Owner</div>
+      <div className="product-property-value tight-col col-60">
+          {Array.isArray(itemInfo.data_details.owner)? itemInfo.data_details.owner.join(", ") : itemInfo.data_details.owner}
+      </div>
+    </div>
+  );
+
+  const dataFormatElement = itemInfo.data_details.format && (
+    <div className="product-property row">
+      <div className="product-property-name col col-40">Data Owner</div>
+      <div className="product-property-value tight-col col-60">
+          {Array.isArray(itemInfo.data_details.format)? itemInfo.data_details.format.join(", ") : itemInfo.data_details.format}
+      </div>
+    </div>
+  );
+
   const latestCommitDateElement =  itemInfo.latestCommitDate && (
     <div className="product-property row">
       <div className="product-property-name col col-50">Latest Commit</div>
@@ -597,6 +633,10 @@ const ItemDialogContent = ({ itemInfo }) => {
                     { amountElement }
                     { tickerElement }
                     { modeElement }
+                    { dataDurationElement }
+                    { dataFrequencyElement }
+                    { dataOwnerElement }
+                    { dataFormatElement }
                   </div> }
                   { innerWidth > 1000 && <div className="col col-50">
                     { twitterElement }
@@ -606,6 +646,8 @@ const ItemDialogContent = ({ itemInfo }) => {
                     { amountElement }
                     { tickerElement }
                     { modeElement }
+                    { dataDurationElement }
+                    { dataOwnerElement }
                   </div>
                   }
                   { innerWidth > 1000 && <div className="col col-50">
@@ -613,6 +655,8 @@ const ItemDialogContent = ({ itemInfo }) => {
                       { latestCommitDateElement }
                       { releaseDateElement }
                       { crunchbaseEmployeesElement }
+                      { dataFrequencyElement }
+                      { dataFormatElement }
                     </div>
                   }
               </div>
