@@ -436,7 +436,7 @@ const ItemDialogContent = ({ itemInfo }) => {
   );
   const dataDurationElement = itemInfo.data_details.duration && (
     <div className="product-property row">
-      <div className="product-property-name col col-40">Data Duration</div>
+      <div className="product-property-name col col-40">Duration</div>
       <div className="product-property-value tight-col col-60">
           {itemInfo.data_details.duration}
       </div>
@@ -445,27 +445,54 @@ const ItemDialogContent = ({ itemInfo }) => {
 
   const dataFrequencyElement = itemInfo.data_details.frequency && (
     <div className="product-property row">
-      <div className="product-property-name col col-40">Data Duration</div>
+      <div className="product-property-name col col-40">Frequency</div>
       <div className="product-property-value tight-col col-60">
-          {itemInfo.data_details.duration}
+          {itemInfo.data_details.frequency}
       </div>
     </div>
   );
-
+  const displayList = (val) => Array.isArray(val) ? val.join(", ") : val;
   const dataOwnerElement = itemInfo.data_details.owner && (
     <div className="product-property row">
-      <div className="product-property-name col col-40">Data Owner</div>
+      <div className="product-property-name col col-40">Owner</div>
       <div className="product-property-value tight-col col-60">
-          {Array.isArray(itemInfo.data_details.owner)? itemInfo.data_details.owner.join(", ") : itemInfo.data_details.owner}
+          {displayList(itemInfo.data_details.owner)}
       </div>
     </div>
   );
 
   const dataFormatElement = itemInfo.data_details.format && (
     <div className="product-property row">
-      <div className="product-property-name col col-40">Data Owner</div>
+      <div className="product-property-name col col-40">Format</div>
       <div className="product-property-value tight-col col-60">
-          {Array.isArray(itemInfo.data_details.format)? itemInfo.data_details.format.join(", ") : itemInfo.data_details.format}
+          {displayList(itemInfo.data_details.format)}
+      </div>
+    </div>
+  );
+
+  const regionElement = itemInfo.region && (
+    <div className="product-property row">
+      <div className="product-property-name col col-40">Region</div>
+      <div className="product-property-value tight-col col-60">
+          {displayList(itemInfo.region)}
+      </div>
+    </div>
+  );
+
+  const publicationElement = itemInfo.publication != undefined && (
+    <div className="product-property row">
+      <div className="product-property-name col col-40">Publication</div>
+      <div className="product-property-value tight-col col-60">
+          {itemInfo.publication? "✔️ " : "❌" }
+      </div>
+    </div>
+  );
+
+  const itemTypeElement = itemInfo.item_type && (
+    <div className="product-property row">
+      <div className="product-property-name col col-40">Item Type</div>
+      <div className="product-property-value tight-col col-60">
+          {displayList(itemInfo.item_type)}
       </div>
     </div>
   );
@@ -633,10 +660,9 @@ const ItemDialogContent = ({ itemInfo }) => {
                     { amountElement }
                     { tickerElement }
                     { modeElement }
-                    { dataDurationElement }
-                    { dataFrequencyElement }
-                    { dataOwnerElement }
-                    { dataFormatElement }
+                    { regionElement }
+                    { publicationElement }
+                    { itemTypeElement }
                   </div> }
                   { innerWidth > 1000 && <div className="col col-50">
                     { twitterElement }
@@ -646,8 +672,7 @@ const ItemDialogContent = ({ itemInfo }) => {
                     { amountElement }
                     { tickerElement }
                     { modeElement }
-                    { dataDurationElement }
-                    { dataOwnerElement }
+                    { publicationElement }
                   </div>
                   }
                   { innerWidth > 1000 && <div className="col col-50">
@@ -655,11 +680,29 @@ const ItemDialogContent = ({ itemInfo }) => {
                       { latestCommitDateElement }
                       { releaseDateElement }
                       { crunchbaseEmployeesElement }
+                      { regionElement }
+                      { itemTypeElement }
+                    </div>
+                  }
+                </div>
+                <div className="row">
+                  { innerWidth <= 1000 &&  <div className="product-data-detail col-50 single-column">
+                    { dataDurationElement }
+                    { dataFrequencyElement }
+                    { dataOwnerElement }
+                    { dataFormatElement }
+                  </div> }
+                  { innerWidth > 1000 && <div className="product-data-detail col col-50">
+                    { dataDurationElement }
+                    { dataOwnerElement }
+                  </div>
+                  }
+                  { innerWidth > 1000 && <div className="product-data-detail col col-50">
                       { dataFrequencyElement }
                       { dataFormatElement }
                     </div>
                   }
-              </div>
+                </div>
             </div>
   </Fragment>;
 
