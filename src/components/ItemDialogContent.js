@@ -430,7 +430,7 @@ const ItemDialogContent = ({ itemInfo }) => {
       <div className="product-property-name col col-40">Modes</div>
       <div className="product-property-value tight-col col-60">
           <ul>
-            {itemInfo.mode.map((me) => <li><b>{me.primary}</b>: {me.secondary.join(", ")}</li>)}
+            {itemInfo.mode.map((me) => <li key={me.primary}><b>{me.primary}</b>: {me.secondary.join(", ")}</li>)}
           </ul>
       </div>
     </div>
