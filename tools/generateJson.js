@@ -644,6 +644,31 @@ async function main () {
     return result;
   }
 
+  /*
+   * Generates a filter for a single level list.
+   * The field should look like this:
+   *
+   * foo:
+   *  - bar
+   *  - baz
+   * 
+   * See the region field for an example
+   */
+
+  const extractListOptions = function(field) {
+    return _.chain(items).flatMap(function(item) {
+      return item[field];
+    }).filter(function(x) {
+      return !!x;
+    }).sortBy(sortFn).uniq().map(function(x) {
+      return {
+        id: x,
+        url: saneName(x)
+      };
+    }).value();
+  }
+
+
   const generateLicenses = function() {
     const otherLicenses = extractOptions('license').filter(function(x) {
       return x.id !== 'NotOpenSource';
@@ -684,7 +709,8 @@ async function main () {
     organization: pack(extractOptions('organization')),
     landscape: pack(generateLandscapeHierarchy()),
     license: pack(generateLicenses()),
-    modes: pack(extractNestedListOptions('mode')),
+    mode: pack(extractNestedListOptions('mode')),
+    region: pack(extractListOptions('region')),
     crunchbaseSlugs: [],
     languages: generateLanguages(),
   }
