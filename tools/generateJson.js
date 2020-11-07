@@ -131,16 +131,6 @@ async function main () {
       }).map(function(p) {
         return p.node.name;
       });
-      const getHeadquarters = function() {
-        let result = null;
-        if (node.crunchbase_data) {
-          result = formatCity(node.crunchbase_data);
-        }
-        if (!result) {
-          result = 'N/A';
-        }
-        return result;
-      };
       const getTwitter = function() {
         return actualTwitter(node, node.crunchbase_data);
       };
@@ -215,7 +205,6 @@ async function main () {
         language: (((node.github_data || {}).languages || [])[0] || {}).name || null,
         stars: (node.github_data || {}).stars,
         license: getLicense(),
-        headquarters: getHeadquarters(),
         twitter: getTwitter(),
         latestTweetDate: formatDate((node.twitter_data || {}).latest_tweet_date),
         description: getDescription(),
@@ -609,32 +598,47 @@ async function main () {
     return result;
   };
 
-  const generateHeadquarters = function() {
-    const values = _.uniq(itemsWithExtraFields.map(function(item) {
-      return {headquarters: item.headquarters, country: item.crunchbaseData.country};
+  /*
+   * Generates a filter for a two level list.
+   * The field should look like this:
+   *
+   * foo:
+   *   primary: bar
+   *   secondary:
+   *     - bax
+   *     - baz
+   * 
+   * See the mode field for an example
+   */
+
+  const extractNestedListOptions = function(field) {
+    const values = _.uniq(items.flatMap(function(item) {
+      if (item[field]) {
+          // console.info("Generating lookup for "+field+":  found entry with mode"+JSON.stringify(item.mode));
+          return item[field].flatMap((ie) => ie.secondary.map(function(s) {
+            return {primary: ie.primary, secondary: s}
+          }));
+      }
+      return undefined;
     }));
-    const grouped  = _.groupBy(values, (x) => x.country);
-    const keys = _.sortBy(_.keys(grouped), (country) => country === 'Antarctica' ? 'ZZZ' : country);
+    // console.info("Generating lookup for "+field+":  after mapping" + JSON.stringify(values));
+    const defined = _.filter(values, (x) => x != undefined);
+    // console.info("Generating lookup for "+field+":  after filtering" + JSON.stringify(defined));
+    const grouped  = _.groupBy(defined, (x) => x.primary);
+    // console.info("Generating lookup for "+field+":  after grouping" + JSON.stringify(grouped));
+    const keys = _.sortBy(_.keys(grouped), (primary) => primary);
+    // console.info("Generating lookup for "+field+":  after sorting" + JSON.stringify(keys));
     const result = [];
     _.each(keys, function(key) {
       const value = grouped[key];
-      const children = _.uniqBy(value, (x) => x.headquarters);
+      // console.info("Generating lookup for "+field+":  value = " + JSON.stringify(value));
+      const children = _.uniqBy(value, (x) => x.secondary);
+      // console.info("Generating lookup for "+field+":  children = " + JSON.stringify(children));
       result.push({
         id: key,
         url: saneName(key),
         level: 1,
-        children: children.map( (x) => (x.headquarters))
-      });
-      const stateAndCity = (x) => x.country === 'United States' ? x.headquarters.split(', ')[1] + x.headquarters.split(', ')[0] : x.headquarters.split(', ')[0];
-      _.each(_.orderBy(children,  (x) => stateAndCity(x) ), function(record) {
-        result.push({
-          id: record.headquarters,
-          label: record.country === 'United States' ? record.headquarters :  record.headquarters.split(', ')[0],
-          groupingLabel: record.headquarters,
-          url: saneName(record.headquarters),
-          level: 2,
-          parentId: key
-        });
+        children: children.map( (x) => (x.secondary))
       });
     });
     return result;
@@ -680,7 +684,7 @@ async function main () {
     organization: pack(extractOptions('organization')),
     landscape: pack(generateLandscapeHierarchy()),
     license: pack(generateLicenses()),
-    headquarters: pack([]),
+    modes: pack(extractNestedListOptions('mode')),
     crunchbaseSlugs: [],
     languages: generateLanguages(),
   }
