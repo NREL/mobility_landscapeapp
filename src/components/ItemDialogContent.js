@@ -177,7 +177,6 @@ const chart = function(itemInfo) {
     label: function(tooltipItem, data) {
       debugger
                     var label = data.datasets[tooltipItem.datasetIndex].label || '';
-
                     if (label) {
                         label += ': ';
                     }
@@ -481,20 +480,29 @@ const ItemDialogContent = ({ itemInfo }) => {
     </div>
   );
 
-  const publicationElement = itemInfo.publication != undefined && (
-    <div className="product-property row">
-      <div className="product-property-name col col-40">Publication</div>
-      <div className="product-property-value tight-col col-60">
-          {itemInfo.publication? "✔️ " : "❌" }
-      </div>
-    </div>
-  );
-
   const itemTypeElement = itemInfo.item_type && (
     <div className="product-property row">
       <div className="product-property-name col col-40">Item Type</div>
       <div className="product-property-value tight-col col-60">
           {displayList(itemInfo.item_type)}
+      </div>
+    </div>
+  );
+
+  const privacyElement = itemInfo.privacy && (
+    <div className="product-property row">
+      <div className="product-property-name col col-40">Privacy</div>
+      <div className="product-property-value tight-col col-60">
+          {displayList(itemInfo.privacy)}
+      </div>
+    </div>
+  );
+
+  const geoscopeElement = itemInfo.geo_scope && (
+    <div className="product-property row">
+      <div className="product-property-name col col-40">Geographic Scope</div>
+      <div className="product-property-value tight-col col-60">
+          {displayList(itemInfo.geo_scope)}
       </div>
     </div>
   );
@@ -663,8 +671,9 @@ const ItemDialogContent = ({ itemInfo }) => {
                     { tickerElement }
                     { modeElement }
                     { regionElement }
-                    { publicationElement }
                     { itemTypeElement }
+                    { privacyElement }
+                    { geoscopeElement }
                   </div> }
                   { innerWidth > 1000 && <div className="col col-50">
                     { twitterElement }
@@ -674,7 +683,7 @@ const ItemDialogContent = ({ itemInfo }) => {
                     { amountElement }
                     { tickerElement }
                     { modeElement }
-                    { publicationElement }
+                    { geoscopeElement }
                   </div>
                   }
                   { innerWidth > 1000 && <div className="col col-50">
@@ -684,6 +693,7 @@ const ItemDialogContent = ({ itemInfo }) => {
                       { crunchbaseEmployeesElement }
                       { regionElement }
                       { itemTypeElement }
+                      { privacyElement }
                     </div>
                   }
                 </div>
