@@ -543,6 +543,15 @@ async function main () {
   }
   */
 
+  /*
+   * Generates a filter for a single value
+   * The field should look like this:
+   *
+   * foo: bar
+   *
+   * See the privacy field for an example
+   */
+
   const extractOptions = function(name) {
     return _.chain(itemsWithExtraFields).map(function(x) {
       return x[name];
@@ -706,11 +715,11 @@ async function main () {
   }
 
   const lookups = {
-    organization: pack(extractOptions('organization')),
     landscape: pack(generateLandscapeHierarchy()),
     license: pack(generateLicenses()),
     mode: pack(extractNestedListOptions('mode')),
     region: pack(extractListOptions('region')),
+    privacy: pack(extractOptions('privacy')),
     crunchbaseSlugs: [],
     languages: generateLanguages(),
   }
