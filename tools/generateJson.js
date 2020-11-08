@@ -649,6 +649,16 @@ async function main () {
         level: 1,
         children: children.map( (x) => (x.secondary))
       });
+      _.each(_.orderBy(children,  (x) => x), function(record) {
+        result.push({
+          id: record.secondary,
+          label: record.secondary,
+          groupingLabel: record.secondary,
+          url: saneName(record.secondary),
+          level: 2,
+          parentId: key
+        });
+      });
     });
     return result;
   }
