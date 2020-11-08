@@ -435,7 +435,7 @@ const ItemDialogContent = ({ itemInfo }) => {
       </div>
     </div>
   );
-  const dataDurationElement = itemInfo.data_details.duration && (
+  const dataDurationElement = itemInfo.data_details && itemInfo.data_details.duration && (
     <div className="product-property row">
       <div className="product-property-name col col-40">Duration</div>
       <div className="product-property-value tight-col col-60">
@@ -444,7 +444,7 @@ const ItemDialogContent = ({ itemInfo }) => {
     </div>
   );
 
-  const dataFrequencyElement = itemInfo.data_details.frequency && (
+  const dataFrequencyElement = itemInfo.data_details && itemInfo.data_details.frequency && (
     <div className="product-property row">
       <div className="product-property-name col col-40">Frequency</div>
       <div className="product-property-value tight-col col-60">
@@ -453,7 +453,7 @@ const ItemDialogContent = ({ itemInfo }) => {
     </div>
   );
   const displayList = (val) => Array.isArray(val) ? val.join(", ") : val;
-  const dataOwnerElement = itemInfo.data_details.owner && (
+  const dataOwnerElement = itemInfo.data_details && itemInfo.data_details.owner && (
     <div className="product-property row">
       <div className="product-property-name col col-40">Owner</div>
       <div className="product-property-value tight-col col-60">
@@ -462,7 +462,7 @@ const ItemDialogContent = ({ itemInfo }) => {
     </div>
   );
 
-  const dataFormatElement = itemInfo.data_details.format && (
+  const dataFormatElement = itemInfo.data_details && itemInfo.data_details.format && (
     <div className="product-property row">
       <div className="product-property-name col col-40">Format</div>
       <div className="product-property-value tight-col col-60">
