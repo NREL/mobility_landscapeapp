@@ -8,6 +8,7 @@ import ProjectFilterContainer from './ProjectFilterContainer';
 import LicenseFilterContainer from './LicenseFilterContainer';
 import OrganizationFilterContainer from './OrganizationFilterContainer';
 import HeadquartersFilterContainer from './HeadquartersFilterContainer';
+import RegionFilterContainer from './RegionFilterContainer';
 import LandscapeFilterContainer from './LandscapeFilterContainer';
 import fields from '../types/fields';
 const Filters = () => {
@@ -35,19 +36,24 @@ const Filters = () => {
 
       <FormGroup row>
         <FormControl component="fieldset">
-          <FormLabel component="legend">{fields.organization.label}</FormLabel>
+          <FormLabel component="legend">{fields.privacy.label}</FormLabel>
           <OrganizationFilterContainer />
         </FormControl>
       </FormGroup>
 
       <FormGroup row>
         <FormControl component="fieldset">
-          <FormLabel component="legend">{fields.headquarters.label}</FormLabel>
+          <FormLabel component="legend">{fields.mode.label}</FormLabel>
           <HeadquartersFilterContainer />
         </FormControl>
       </FormGroup>
 
-
+      <FormGroup row>
+        <FormControl component="fieldset">
+          <FormLabel component="legend">{fields.region.label}</FormLabel>
+          <RegionFilterContainer />
+        </FormControl>
+      </FormGroup>
 
     </div>;
 }

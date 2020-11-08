@@ -5,8 +5,11 @@ export default function exportItems(elements) {
     label: 'Name',
     value: 'name'
   }, {
-    label: 'Organization',
-    value: 'organization'
+    label: 'Privacy',
+    value: 'privacy'
+  }, {
+    label: 'Region',
+    value: 'region'
   }, {
     label: 'Homepage',
     value: 'homepage_url'
@@ -38,8 +41,8 @@ export default function exportItems(elements) {
     label: 'License',
     value: 'license'
   }, {
-    label: 'Headquarters',
-    value: 'headquarters'
+    label: 'Mode',
+    value: 'mode'
   }, {
     label: 'Latest Tweet Date',
     value: (row) => formatDate(row, 'latestTweetDate.original')

@@ -47,7 +47,7 @@ const DefaultCard = (({item, handler, itemRef, ...props}) => {
               <div className="mosaic-info">
                 <div className="mosaic-title">
                   <h5>{item.name}</h5>
-                  {item.organization}
+                  {item.region}
                 </div>
                 <div className="mosaic-stars">
                   { _.isNumber(item.stars) && item.stars &&

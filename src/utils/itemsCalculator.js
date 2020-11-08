@@ -20,15 +20,16 @@ export const getFilteredItems = createSelector(
   function(data, filters, mainContentMode) {
     var filterHostedProject = filterFn({field: 'relation', filters});
     var filterByLicense = filterFn({field: 'license', filters});
-    var filterByOrganization = filterFn({field: 'organization', filters});
-    var filterByHeadquarters = filterFn({field: 'headquarters', filters});
+    var filterByPrivacy = filterFn({field: 'privacy', filters});
+    var filterByMode = filterFn({field: 'mode', filters});
+    var filterByRegion = filterFn({field: 'region', filters});
     var filterByLandscape = mainContentMode === 'card' ? filterFn({field: 'landscape', filters}) : (x) => true;
     var filterByBestPractices = filterFn({field: 'bestPracticeBadgeId', filters});
     var filterByEnduser = filterFn({field: 'enduser', filters});
     var filterByParent = filterFn({field: 'parents', filters});
     var filterByLanguage = filterFn({field: 'language', filters});
     return data.filter(function(x) {
-      return filterHostedProject(x) && filterByLicense(x) && filterByOrganization(x) && filterByHeadquarters(x) && filterByLandscape(x) && filterByBestPractices(x) && filterByEnduser(x) && filterByParent(x) && filterByLanguage(x);
+      return filterHostedProject(x) && filterByLicense(x) && filterByPrivacy(x) && filterByMode(x) && filterByRegion(x) && filterByLandscape(x) && filterByBestPractices(x) && filterByEnduser(x) && filterByParent(x) && filterByLanguage(x);
     });
   }
 );
@@ -53,14 +54,15 @@ const getFilteredItemsForBigPicture = createSelector(
   function(data, filters) {
     var filterHostedProject = filterFn({field: 'relation', filters});
     var filterByLicense = filterFn({field: 'license', filters});
-    var filterByOrganization = filterFn({field: 'organization', filters});
-    var filterByHeadquarters = filterFn({field: 'headquarters', filters});
+    var filterByPrivacy = filterFn({field: 'privacy', filters});
+    var filterByMode = filterFn({field: 'mode', filters});
+    var filterByRegion = filterFn({field: 'region', filters});
     var filterByBestPractices = filterFn({field: 'bestPracticeBadgeId', filters});
     var filterByEnduser = filterFn({field: 'enduser', filters});
     var filterByParent = filterFn({field: 'parents', filters});
     var filterByLanguage = filterFn({field: 'language', filters});
     return addExtraFields(data.filter(function(x) {
-      return filterHostedProject(x) && filterByLicense(x) && filterByOrganization(x) && filterByHeadquarters(x) && filterByBestPractices(x) && filterByEnduser(x) && filterByParent(x) && filterByLanguage(x);
+      return filterHostedProject(x) && filterByLicense(x) && filterByPrivacy(x) && filterByMode(x) && filterByRegion(x) && filterByBestPractices(x) && filterByEnduser(x) && filterByParent(x) && filterByLanguage(x);
     }));
   }
 );

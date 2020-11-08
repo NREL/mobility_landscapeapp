@@ -96,23 +96,35 @@ const fields = {
     id: 'amount',
     label: 'Market Cap / Funding of organization',
   },
-  organization: {
-    id: 'organization',
-    label: 'Organization',
+  privacy: {
+    id: 'privacy',
+    label: 'Privacy',
     isArray: true,
-    values: [].concat(unpack(lookups.organization) || [])
+    values: [].concat(unpack(lookups.privacy) || [])
   },
-  headquarters: {
-    id: 'headquarters',
-    label: 'Headquarters Location',
+  mode: {
+    id: 'mode',
+    label: 'Travel modes',
     isArray: true,
-    values: [].concat(unpack(lookups.headquarters) || []),
-    processValuesBeforeSaving: function(values) {
-      return processValuesBeforeSaving({options: fields.headquarters.values, values: values});
+    filterFn: function(filter, value) {
+      return filterNestedList(filter, value);
     },
-    processValuesBeforeLoading: function(values) {
-      return processValuesBeforeLoading({options: fields.headquarters.values, values: values});
+    values: [].concat(unpack(lookups.mode) || []),
+     processValuesBeforeSaving: function(values) {
+      return processValuesBeforeSaving({options: fields.mode.values, values: values});
+     },
+     processValuesBeforeLoading: function(values) {
+      return processValuesBeforeLoading({options: fields.mode.values, values: values});
     }
+  },
+  region: {
+    id: 'region',
+    label: 'Region',
+    isArray: true,
+    values: [].concat(unpack(lookups.region) || []),
+    filterFn: function(filter, value) {
+      return filterList(filter, value);
+    } 
   },
   landscape: {
     id: 'landscape',

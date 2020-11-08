@@ -4,11 +4,11 @@ import { changeFilter } from '../reducers/mainReducer.js';
 import { options } from '../types/fields';
 
 const mapStateToProps = (state) => ({
-  value: state.main.filters.organization,
-  options: options('organization')
+  value: state.main.filters.privacy,
+  options: options('privacy')
 });
 const onChange = function(newValue) {
-  return changeFilter('organization', newValue);
+  return changeFilter('privacy', newValue);
 }
 const mapDispatchToProps = {
   onChange: onChange

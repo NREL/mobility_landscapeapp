@@ -338,7 +338,6 @@ const ItemDialogContent = ({ itemInfo }) => {
   }
   const { innerWidth, innerHeight } = useWindowSize();
 
-  const linkToOrganization = filtersToUrl({grouping: 'organization', filters: {organization: itemInfo.organization}});
   const itemCategory = function(path) {
     var separator = <span className="product-category-separator" key="product-category-separator">•</span>;
     var subcategory = _.find(fields.landscape.values,{id: path});
@@ -581,14 +580,7 @@ const ItemDialogContent = ({ itemInfo }) => {
 
   const productInfo = <Fragment>
               <div className="product-main">
-                { (isGoogle || isModalOnly) ?
-                  <React.Fragment>
-                    <div className="product-name">{itemInfo.name}</div>
-                    <div className="product-description">{itemInfo.description}</div>
-                    <div className="product-parent"><InternalLink to={linkToOrganization}>{itemInfo.organization}</InternalLink></div>
-                    <div className="product-category">{itemCategory(itemInfo.landscape)}</div>
-                  </React.Fragment> :
-                  <React.Fragment>
+                { <React.Fragment>
                     <div className="product-name">{itemInfo.name}</div>
                     <div className="product-category">{itemCategory(itemInfo.landscape)}</div>
                     <div className="product-description">{itemInfo.description}</div>
