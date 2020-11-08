@@ -312,6 +312,73 @@ export function options(field) {
     };
   });
 }
+
+/*
+ * Filter for a field that has a single level list
+ *
+ * The field should look like this:
+ * foo:
+ *   - bar
+ *   - baz
+ *
+ * and would have typically been processed by extractListOptions in generateJson
+ */
+
+const filterList = function(filter, value) {
+    // console.log("Filtering for "filter" value "value);
+    if (filter == null) {
+        return true;
+    }
+    if (filter.length == 0) {
+        return true;
+    }
+    // Note three not not not = !value, but truthily
+    if (!!!value) {
+        return false;
+    }
+    const flattenedValues = value.flatten();
+    return _.intersection(filter, flattenedValues).length > 0;
+}
+
+/*
+ * Filter for a field that has a two-level nested list
+ *
+ * The field should look like this:
+ * foo:
+ *   primary: bar
+ *   secondary:
+ *     - bax
+ *     - baz
+ *
+ * and would have typically been processed by extractNestedListOptions in generateJson
+ */
+
+const filterNestedList = function(filter, value) {
+    // console.log("Filtering for "filter" value "value);
+    if (filter == null) {
+        return true;
+    }
+    if (filter.length == 0) {
+        return true;
+    }
+    // Note three not not not = !value, but truthily
+    if (!!!value) {
+        return false;
+    }
+    const flattenedValues = value.flatMap((ve) => [ve.primary, ve.secondary.flatten()]);
+    return _.intersection(filter, flattenedValues).length > 0;
+}
+
+/*
+ * Exported filtration method.
+ * Uses custom field if it exists, default implementation if it doesn't.
+ * Default implementation is simple: does the field have the matching string in it?
+ * Works well for single fields
+ *
+ * For the default implementation, the field should look like this:
+ * foo: bar
+ * and would have typically been processed by extractOptions in generateJson
+ */
 export function filterFn({field, filters}) {
   const fieldInfo = fields[field];
   const filter = filters[field];
