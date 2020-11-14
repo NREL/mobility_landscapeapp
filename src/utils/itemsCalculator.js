@@ -21,6 +21,12 @@ export const getFilteredItems = createSelector(
     var filterHostedProject = filterFn({field: 'relation', filters});
     var filterByLicense = filterFn({field: 'license', filters});
     var filterByPrivacy = filterFn({field: 'privacy', filters});
+    var filterByGeo_scope = filterFn({field: 'geo_scope', filters});
+    var filterByItem_type = filterFn({field: 'item_type', filters});
+    var filterBydata_Duration = filterFn({field: 'data_duration', filters});
+    var filterBydata_Owner = filterFn({field: 'data_owner', filters});
+    var filterBydata_Format = filterFn({field: 'data_format', filters});
+    var filterBydata_Frequency = filterFn({field: 'data_frequency', filters});
     var filterByMode = filterFn({field: 'mode', filters});
     var filterByRegion = filterFn({field: 'region', filters});
     var filterByLandscape = mainContentMode === 'card' ? filterFn({field: 'landscape', filters}) : (x) => true;
@@ -29,7 +35,7 @@ export const getFilteredItems = createSelector(
     var filterByParent = filterFn({field: 'parents', filters});
     var filterByLanguage = filterFn({field: 'language', filters});
     return data.filter(function(x) {
-      return filterHostedProject(x) && filterByLicense(x) && filterByPrivacy(x) && filterByMode(x) && filterByRegion(x) && filterByLandscape(x) && filterByBestPractices(x) && filterByEnduser(x) && filterByParent(x) && filterByLanguage(x);
+      return filterHostedProject(x) && filterByLicense(x) && filterByPrivacy(x) && filterByGeo_scope(x) && filterByItem_type(x) && filterBydata_Duration(x) && filterBydata_Owner(x) && filterBydata_Format(x) && filterBydata_Frequency(x) && filterByMode(x) && filterByRegion(x) && filterByLandscape(x) && filterByBestPractices(x) && filterByEnduser(x) && filterByParent(x) && filterByLanguage(x);
     });
   }
 );
@@ -55,6 +61,12 @@ const getFilteredItemsForBigPicture = createSelector(
     var filterHostedProject = filterFn({field: 'relation', filters});
     var filterByLicense = filterFn({field: 'license', filters});
     var filterByPrivacy = filterFn({field: 'privacy', filters});
+    var filterByGeo_scope = filterFn({field: 'geo_scope', filters});
+    var filterByItem_type = filterFn({field: 'item_type', filters});
+    var filterBydata_Duration = filterFn({field: 'data_duration', filters});
+    var filterBydata_Owner = filterFn({field: 'data_owner', filters});
+    var filterBydata_Format = filterFn({field: 'data_format', filters});
+    var filterBydata_Frequency = filterFn({field: 'data_frequency', filters});
     var filterByMode = filterFn({field: 'mode', filters});
     var filterByRegion = filterFn({field: 'region', filters});
     var filterByBestPractices = filterFn({field: 'bestPracticeBadgeId', filters});
@@ -62,7 +74,7 @@ const getFilteredItemsForBigPicture = createSelector(
     var filterByParent = filterFn({field: 'parents', filters});
     var filterByLanguage = filterFn({field: 'language', filters});
     return addExtraFields(data.filter(function(x) {
-      return filterHostedProject(x) && filterByLicense(x) && filterByPrivacy(x) && filterByMode(x) && filterByRegion(x) && filterByBestPractices(x) && filterByEnduser(x) && filterByParent(x) && filterByLanguage(x);
+      return filterHostedProject(x) && filterByLicense(x) && filterByPrivacy(x) && filterByGeo_scope(x) && filterByItem_type(x) && filterBydata_Duration(x) && filterBydata_Format(x) && filterBydata_Frequency(x) && filterBydata_Owner(x) && filterByMode(x) && filterByRegion(x) && filterByBestPractices(x) && filterByEnduser(x) && filterByParent(x) && filterByLanguage(x);
     }));
   }
 );

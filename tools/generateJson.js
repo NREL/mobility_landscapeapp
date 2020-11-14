@@ -553,7 +553,7 @@ async function main () {
    */
 
   const extractOptions = function(name) {
-    return _.chain(itemsWithExtraFields).map(function(x) {
+    var retVal= _.chain(itemsWithExtraFields).map(function(x) {
       return x[name];
     }).filter(function(x) {
       return !!x
@@ -563,6 +563,8 @@ async function main () {
         url: saneName(x)
       };
     }).value();
+    // console.log("for "+name+ " returning "+JSON.stringify(retVal));
+      return retVal;
   };
 
   const getGroupingLabel = function({category, node}) {
@@ -623,7 +625,7 @@ async function main () {
   const extractNestedListOptions = function(field) {
     const values = _.uniq(items.flatMap(function(item) {
       if (item[field]) {
-          // console.info("Generating lookup for "+field+":  found entry with mode"+JSON.stringify(item.mode));
+          // console.info("Generating lookup for "+field+":  found entry with name"+JSON.stringify(item.name));
           return item[field].flatMap((ie) => ie.secondary.map(function(s) {
             return {primary: ie.primary, secondary: s}
           }));
@@ -730,6 +732,12 @@ async function main () {
     mode: pack(extractNestedListOptions('mode')),
     region: pack(extractListOptions('region')),
     privacy: pack(extractOptions('privacy')),
+    geo_scope: pack(extractOptions('geo_scope')),
+    data_duration: pack(extractOptions('data_duration')),
+    data_owner: pack(extractListOptions('data_owner')),
+    data_format: pack(extractOptions('data_format')),
+    data_frequency: pack(extractOptions('data_frequency')),
+    item_type: pack(extractListOptions('item_type')),
     crunchbaseSlugs: [],
     languages: generateLanguages(),
   }

@@ -3,7 +3,7 @@ import GroupingSelector from './GroupingSelector';
 import { changeGrouping } from '../reducers/mainReducer.js';
 import fields from '../types/fields';
 
-const groupingFields = ['landscape', 'relation', 'license', 'privacy'];
+const groupingFields = ['landscape', 'relation', 'license', 'privacy', 'geo_scope', 'data_duration', 'data_frequency', 'data_format'];
 const options = [{
   id: 'no',
   label: 'No Grouping',

@@ -434,38 +434,39 @@ const ItemDialogContent = ({ itemInfo }) => {
       </div>
     </div>
   );
-  const dataDurationElement = itemInfo.data_details && itemInfo.data_details.duration && (
+
+  const dataDurationElement = itemInfo.data_duration && (
     <div className="product-property row">
-      <div className="product-property-name col col-40">Duration</div>
+      <div className="product-property-name col col-40">Data Duration</div>
       <div className="product-property-value tight-col col-60">
-          {itemInfo.data_details.duration}
+          {itemInfo.data_duration}
       </div>
     </div>
   );
 
-  const dataFrequencyElement = itemInfo.data_details && itemInfo.data_details.frequency && (
+  const dataFrequencyElement = itemInfo.data_frequency && (
     <div className="product-property row">
-      <div className="product-property-name col col-40">Frequency</div>
+      <div className="product-property-name col col-40">Data Frequency</div>
       <div className="product-property-value tight-col col-60">
-          {itemInfo.data_details.frequency}
+          {itemInfo.data_frequency}
       </div>
     </div>
   );
   const displayList = (val) => Array.isArray(val) ? val.join(", ") : val;
-  const dataOwnerElement = itemInfo.data_details && itemInfo.data_details.owner && (
+  const dataOwnerElement = itemInfo.data_owner && (
     <div className="product-property row">
-      <div className="product-property-name col col-40">Owner</div>
+      <div className="product-property-name col col-40">Data Owner</div>
       <div className="product-property-value tight-col col-60">
-          {displayList(itemInfo.data_details.owner)}
+          {displayList(itemInfo.data_owner)}
       </div>
     </div>
   );
 
-  const dataFormatElement = itemInfo.data_details && itemInfo.data_details.format && (
+  const dataFormatElement = itemInfo.data_format && (
     <div className="product-property row">
-      <div className="product-property-name col col-40">Format</div>
+      <div className="product-property-name col col-40">Data Format</div>
       <div className="product-property-value tight-col col-60">
-          {displayList(itemInfo.data_details.format)}
+          {displayList(itemInfo.data_format)}
       </div>
     </div>
   );

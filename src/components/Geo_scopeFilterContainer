@@ -1,0 +1,17 @@
+import { connect } from 'react-redux';
+import ComboboxMultiSelector from './ComboboxMultiSelector';
+import { changeFilter } from '../reducers/mainReducer.js';
+import { options } from '../types/fields';
+
+const mapStateToProps = (state) => ({
+  value: state.main.filters.geo_scope,
+  options: options('geo_scope')
+});
+const onChange = function(newValue) {
+  return changeFilter('geo_scope', newValue);
+}
+const mapDispatchToProps = {
+  onChange: onChange
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ComboboxMultiSelector);

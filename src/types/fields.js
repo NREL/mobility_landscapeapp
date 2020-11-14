@@ -102,6 +102,48 @@ const fields = {
     isArray: true,
     values: [].concat(unpack(lookups.privacy) || [])
   },
+  geo_scope: {
+    id: 'geo_scope',
+    label: 'Geographic Scope',
+    isArray: true,
+    values: [].concat(unpack(lookups.geo_scope) || [])
+  },
+  data_duration: {
+    id: 'data_duration',
+    label: 'Data Duration',
+    isArray: true,
+    values: [].concat(unpack(lookups.data_duration) || [])
+  },
+  data_format: {
+    id: 'data_format',
+    label: 'Data Format',
+    isArray: true,
+    values: [].concat(unpack(lookups.data_format) || [])
+  },
+  data_frequency: {
+    id: 'data_frequency',
+    label: 'Data Frequency',
+    isArray: true,
+    values: [].concat(unpack(lookups.data_frequency) || [])
+  },
+  item_type: {
+    id: 'item_type',
+    label: 'Item Type',
+    isArray: true,
+    values: [].concat(unpack(lookups.item_type) || []),
+    filterFn: function(filter, value) {
+      return filterList(filter, value);
+    }
+  },
+  data_owner: {
+    id: 'data_owner',
+    label: 'Data Owner',
+    isArray: true,
+    values: [].concat(unpack(lookups.data_owner) || []),
+    filterFn: function(filter, value) {
+      return filterList(filter, value);
+    }
+  },
   mode: {
     id: 'mode',
     label: 'Travel modes',

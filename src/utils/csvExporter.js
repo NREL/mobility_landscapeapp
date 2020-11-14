@@ -8,6 +8,24 @@ export default function exportItems(elements) {
     label: 'Privacy',
     value: 'privacy'
   }, {
+    label: 'Geographic Scope',
+    value: 'geo_scope'
+  }, {
+    label: 'Item Type',
+    value: 'item_type'
+  }, {
+    label: 'Data Duration',
+    value: 'data_duration'
+  }, {
+    label: 'Data Owner',
+    value: 'data_owner'
+  }, {
+    label: 'Data Format',
+    value: 'data_format'
+  }, {
+    label: 'Data Frequency',
+    value: 'data_frequency'
+  }, {
     label: 'Region',
     value: 'region'
   }, {
