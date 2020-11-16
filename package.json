@@ -33,7 +33,7 @@
     "check-landscape": "babel-node tools/checkLandscape",
     "render-landscape": "babel-node tools/renderLandscape",
     "funding": "babel-node tools/fundingForMasterBranch",
-    "copy-dist": "cp -r _headers _redirects \"$PROJECT_PATH\"/data.json \"$PROJECT_PATH\"/images src/embed.html \"$PROJECT_PATH\"/dist/ && cp -r \"$PROJECT_PATH\"/cached_logos \"$PROJECT_PATH\"/dist/logos && yarn copy-iframe-resizer",
+    "copy-dist": "mkdir -p dist/mobility_landscape && cp -r _headers _redirects \"$PROJECT_PATH\"/data.json \"$PROJECT_PATH\"/images src/embed.html \"$PROJECT_PATH\"/dist/mobility_landscape && cp -r \"$PROJECT_PATH\"/cached_logos \"$PROJECT_PATH\"/dist/mobility_landscape/logos && yarn copy-iframe-resizer",
     "copy-iframe-resizer": "cp .yarn/unplugged/iframe-resizer*/node_modules/iframe-resizer/js/iframeResizer.min.js \"$PROJECT_PATH\"/dist/iframeResizer.js && babel-node tools/copyIframeResizer.js",
     "setup-robots": "babel-node tools/sitemap && babel-node tools/addRobots",
     "quick-build": "babel-node tools/build.js && yarn copy-dist && yarn setup-robots",

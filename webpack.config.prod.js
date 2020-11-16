@@ -14,6 +14,7 @@ import {projectPath, settings} from './tools/settings';
 const source =  require('js-yaml').safeLoad(require('fs').readFileSync(require('path').resolve(projectPath, 'processed_landscape.yml')));
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
+  'process.env.ROUTE_BASE': JSON.stringify('/mobility_landscape/'),
   'process.env.GA': require('process').env['GA'],
   'window.possiblePrefix': JSON.stringify(process.env.PROJECT_NAME || ''),
   'window.tweets': (source.twitter_options || {}).count || 0,
@@ -64,7 +65,7 @@ export default {
   target: 'web',
   mode: 'production',
   output: {
-    path: path.resolve(projectPath, 'dist'),
+    path: path.resolve(projectPath, 'dist/mobility_landscape'),
     publicPath: './',
     filename: '[name].[contenthash].js'
   },

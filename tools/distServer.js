@@ -7,7 +7,7 @@ import {chalkProcessing} from './chalkConfig';
 import { projectPath } from './settings';
 const app = require('connect')();
 const serveStatic = require('serve-static');
-console.log(chalkProcessing('running a dist server on http://localhost:4000 ...'));
+console.log(chalkProcessing('running a dist server on http://localhost:4000/mobility_landscape ...'));
 app.use(function (req, res, next) {
   const contentPath = path.resolve(projectPath, 'dist', 'prerender.html');
   if (req.url === '/' && require('fs').existsSync(contentPath)) {
@@ -21,7 +21,7 @@ app.use(function (req, res, next) {
 app.use(serveStatic(path.resolve(projectPath, 'dist')));
 app.use(historyApiFallback());
 app.use(function(req, res) {
-  res.end(require('fs').readFileSync(path.resolve(projectPath, 'dist', 'index.html')));
+  res.end(require('fs').readFileSync(path.resolve(projectPath, 'dist/mobility_landscape', 'index.html')));
 });
 app.listen(4000);
-open('http://localhost:4000');
+open('http://localhost:4000/mobility_landscape');
