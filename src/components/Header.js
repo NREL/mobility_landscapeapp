@@ -10,7 +10,7 @@ const Header = ({ reset }) => {
       <div className="header">
         <span className="landscape-logo"><img onClick={reset} src="./images/iml_logo.svg" alt={name}/></span>
         <OutboundLink eventLabel={short_name} to={company_url} className="landscapeapp-logo" title={`${short_name} Home`}>
-          <img src="./images/nrel.svg" title={`${short_name} Logo`}/>
+          <img src="./images/nrel_logo.svg" title={`${short_name} Logo`}/>
         </OutboundLink>
 
       </div>
