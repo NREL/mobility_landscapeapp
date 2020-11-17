@@ -7,7 +7,7 @@ const { run } = require("react-snap/index.js");
 
 function removeHttpLink(fileName) {
   const content = require('fs').readFileSync(fileName, 'utf-8');
-  const updated = content.replace('<link href="http://localhost:4000/" rel="canonical">', '');
+  const updated = content.replace('<link href="http://localhost:4000/mobility_landscape" rel="canonical">', '');
   require('fs').writeFileSync(fileName, updated);
 }
 
@@ -48,10 +48,10 @@ function embedCss({source, filePrerender}) {
 
 
 async function main() {
-  const file200 = path.resolve(projectPath, 'dist', '200.html');
-  const fileIndex = path.resolve(projectPath, 'dist', 'index.html');
-  const filePrerender = path.resolve(projectPath, 'dist', 'prerender.html');
-  const source = path.resolve(projectPath, 'dist');
+  const file200 = path.resolve(projectPath, 'dist/mobility_landscape', '200.html');
+  const fileIndex = path.resolve(projectPath, 'dist/mobility_landscape', 'index.html');
+  const filePrerender = path.resolve(projectPath, 'dist/mobility_landscape', 'prerender.html');
+  const source = path.resolve(projectPath, 'dist/mobility_landscape');
   console.info(file200, fileIndex, filePrerender, source);
   if (fs.existsSync(file200)) {
     fs.copyFileSync(file200, fileIndex);
@@ -61,7 +61,7 @@ async function main() {
     await run({
       externalServer: true,
       port: 4000,
-      publicPath: "/",
+      publicPath: "/mobility_landscape/",
       crawl: false,
       source: path.relative('.', source),
       puppeteerArgs: ["--no-sandbox", "--disable-setuid-sandbox"],

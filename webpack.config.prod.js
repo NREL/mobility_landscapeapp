@@ -21,6 +21,8 @@ const GLOBALS = {
   __DEV__: false
 };
 
+console.log("GLOBALS "+JSON.stringify(GLOBALS));
+
 export default {
   performance: {
      maxEntrypointSize: 800000,
@@ -92,7 +94,7 @@ export default {
       scriptLoading: 'defer',
       // custom properties
       GA :require('process').env['GA'],
-      prefix: process.env.PROJECT_NAME || '',
+      prefix: "mobility_landscape",
       lastUpdated: new Date().toISOString().substring(0, 19).replace('T', ' ') + 'Z',
       settings: settings
     }),

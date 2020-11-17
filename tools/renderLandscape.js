@@ -56,13 +56,13 @@ async function main() {
       const page = await browser.newPage();
       await page.setViewport({ width, height, deviceScaleFactor })
 
-      const fullUrl = `http://localhost:${port}/${url}?version=${version}&scale=false&pdf`
+      const fullUrl = `http://localhost:${port}/mobility_landscape/${url}?version=${version}&scale=false&pdf`
       console.info(`visiting ${fullUrl}`);
       await page.goto(fullUrl, { waitUntil: 'networkidle0'});
-      await page.screenshot({ path: resolve(projectPath, 'dist', 'images', fileName), fullPage: false });
+      await page.screenshot({ path: resolve(projectPath, 'dist/mobility_landscape', 'images', fileName), fullPage: false });
       if (pdfFileName) {
         await page.emulateMediaType('screen');
-        await page.pdf({path: resolve(projectPath, 'dist', 'images', pdfFileName), width, height, printBackground: true, pageRanges: '1' });
+        await page.pdf({path: resolve(projectPath, 'dist/mobility_landscape', 'images', pdfFileName), width, height, printBackground: true, pageRanges: '1' });
       }
     }
   });
