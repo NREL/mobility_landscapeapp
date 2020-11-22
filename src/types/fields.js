@@ -163,9 +163,15 @@ const fields = {
     id: 'region',
     label: 'Region',
     isArray: true,
-    values: [].concat(unpack(lookups.region) || []),
     filterFn: function(filter, value) {
-      return filterList(filter, value);
+      return filterNestedList(filter, value);
+    },
+    values: [].concat(unpack(lookups.region) || []),
+     processValuesBeforeSaving: function(values) {
+      return processValuesBeforeSaving({options: fields.region.values, values: values});
+     },
+     processValuesBeforeLoading: function(values) {
+      return processValuesBeforeLoading({options: fields.region.values, values: values});
     } 
   },
   landscape: {
