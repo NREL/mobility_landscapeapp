@@ -109,7 +109,7 @@ const Fullscreen = ({ready, groupedItems, landscapeSettings, version}) => {
             paddingTop: 3,
             paddingBottom: 3,
             borderRadius: 5
-          }}>Greyed logos are not associated with an open source repository</div> }
+          }}>Greyed logos are not on GitHub</div> }
           <div style={{
             position: 'absolute',
             top: 10,

@@ -3,7 +3,7 @@ import { pure } from 'recompose';
 
 const Note = () => {
   return <div className="sidebar-note">
-    Greyed logos are not associated with an open source repository.
+    Greyed logos are not on GitHub.
   </div>
 }
 export default pure(Note);
