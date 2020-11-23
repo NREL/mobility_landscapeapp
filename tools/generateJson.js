@@ -730,7 +730,7 @@ async function main () {
     landscape: pack(generateLandscapeHierarchy()),
     license: pack(generateLicenses()),
     mode: pack(extractNestedListOptions('mode')),
-    region: pack(extractListOptions('region')),
+    region: pack(extractNestedListOptions('region')),
     privacy: pack(extractOptions('privacy')),
     geo_scope: pack(extractOptions('geo_scope')),
     data_duration: pack(extractOptions('data_duration')),

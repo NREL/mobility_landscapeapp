@@ -475,7 +475,9 @@ const ItemDialogContent = ({ itemInfo }) => {
     <div className="product-property row">
       <div className="product-property-name col col-40">Region</div>
       <div className="product-property-value tight-col col-60">
-          {displayList(itemInfo.region)}
+          <ul>
+            {itemInfo.region.map((me) => <li key={me.primary}><b>{me.primary}</b>: {me.secondary.join(", ")}</li>)}
+          </ul>
       </div>
     </div>
   );
