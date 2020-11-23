@@ -624,6 +624,7 @@ async function main () {
 
   const extractNestedListOptions = function(field) {
     const values = _.uniq(items.flatMap(function(item) {
+      // console.info("About to extract nested list options for "+field+" from "+JSON.stringify(item));
       if (item[field]) {
           // console.info("Generating lookup for "+field+":  found entry with name"+JSON.stringify(item.name));
           return item[field].flatMap((ie) => ie.secondary.map(function(s) {
@@ -696,7 +697,7 @@ async function main () {
     });
     return [{
       id: 'NotOpenSource',
-      label: 'Not Open Source',
+      label: 'No Associated Repo',
       url: saneName('NotOpenSource'),
       level: 1,
       children: []

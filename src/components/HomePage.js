@@ -186,7 +186,7 @@ const HomePage = ({isEmbed, mainContentMode, ready, hasSelectedItem, filtersVisi
           { !isEmbed && <div className="disclaimer">
             <span  dangerouslySetInnerHTML={{__html: settings.home.header}} />
             Please <OutboundLink to={`https://github.com/${settings.global.repo}`}>open</OutboundLink> a pull request to
-            correct any issues. Greyed logos are not open source. Last Updated: {window.lastUpdated}
+            correct any issues. Greyed logos are not associated with an open source repository. Last Updated: {window.lastUpdated}
           </div> }
           { !isEmbed && <SummaryContainer /> }
 
