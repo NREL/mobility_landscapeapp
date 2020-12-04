@@ -145,18 +145,122 @@ describe("Normal browser", function() {
   landscapeTest();
   embedTest();
 
-  describe("Filtering by organization", () => {
+  describe("Filtering by privacy", () => {
     const project = projects[0];
-    const organizationSlug = paramCase(project.organization);
-    const otherProject = projects.find(({ organization }) => organization.toLowerCase() !== project.organization.toLowerCase());
-    const otherOrganizationSlug = paramCase(otherProject.organization);
+    const privacySlug = paramCase(project.privacy);
+    const otherProject = projects.find(({ privacy }) => privacy.toLowerCase() !== project.privacy.toLowerCase());
+    const otherPrivacySlug = paramCase(otherProject.privacy);
 
-    test(`Checking we see ${project.name} when filtering by organization ${project.organization}`, async function() {
-      page = await makePage(`${appUrl}/organization=${organizationSlug}&format=card-mode`);
+    test(`Checking we see ${project.name} when filtering by privacy ${project.privacy}`, async function() {
+      page = await makePage(`${appUrl}/privacy=${privacySlug}&format=card-mode`);
       await expect(page).toHaveElement(`//div[contains(@class, 'mosaic')]//*[text()='${project.name}']`);
     });
-    test(`Checking we don't see ${project.name} when filtering by organization ${otherProject.organization}`, async function() {
-      await page.goto(`${appUrl}/organization=${otherOrganizationSlug}&format=card-mode`);
+    test(`Checking we don't see ${project.name} when filtering by privacy ${otherProject.privacy}`, async function() {
+      await page.goto(`${appUrl}/privacy=${otherPrivacySlug}&format=card-mode`);
+      await expect(page).not.toHaveElement(`//div[contains(@class, 'mosaic')]//*[text()='${project.name}']`);
+    });
+    close();
+  }, 6 * 60 * 1000);
+});
+
+describe("Normal browser", function() {
+  beforeAll(async function() {
+    setup = async (page) =>  await page.setViewport({ width, height });
+  })
+  mainTest();
+  landscapeTest();
+  embedTest();
+
+  describe("Filtering by geo_scope", () => {
+    const project = projects[0];
+    const geo_scopeSlug = paramCase(project.geo_scope);
+    const otherProject = projects.find(({ geo_scope }) => geo_scope.toLowerCase() !== project.geo_scope.toLowerCase());
+    const othergeo_scopeSlug = paramCase(otherProject.geo_scope);
+
+    test(`Checking we see ${project.name} when filtering by geo_scope ${project.geo_scope}`, async function() {
+      page = await makePage(`${appUrl}/geo_scope=${geo_scopeSlug}&format=card-mode`);
+      await expect(page).toHaveElement(`//div[contains(@class, 'mosaic')]//*[text()='${project.name}']`);
+    });
+    test(`Checking we don't see ${project.name} when filtering by geo_scope ${otherProject.geo_scope}`, async function() {
+      await page.goto(`${appUrl}/geo_scope=${othergeo_scopeSlug}&format=card-mode`);
+      await expect(page).not.toHaveElement(`//div[contains(@class, 'mosaic')]//*[text()='${project.name}']`);
+    });
+    close();
+  }, 6 * 60 * 1000);
+});
+
+describe("Normal browser", function() {
+  beforeAll(async function() {
+    setup = async (page) =>  await page.setViewport({ width, height });
+  })
+  mainTest();
+  landscapeTest();
+  embedTest();
+
+  describe("Filtering by data_duration", () => {
+    const project = projects[0];
+    const data_durationSlug = paramCase(project.data_duration);
+    const otherProject = projects.find(({ data_duration }) => data_duration.toLowerCase() !== project.data_duration.toLowerCase());
+    const otherdata_durationSlug = paramCase(otherProject.data_duration);
+
+    test(`Checking we see ${project.name} when filtering by data_duration ${project.data_duration}`, async function() {
+      page = await makePage(`${appUrl}/data_duration=${data_durationSlug}&format=card-mode`);
+      await expect(page).toHaveElement(`//div[contains(@class, 'mosaic')]//*[text()='${project.name}']`);
+    });
+    test(`Checking we don't see ${project.name} when filtering by data_duration ${otherProject.data_duration}`, async function() {
+      await page.goto(`${appUrl}/data_duration=${otherdata_durationSlug}&format=card-mode`);
+      await expect(page).not.toHaveElement(`//div[contains(@class, 'mosaic')]//*[text()='${project.name}']`);
+    });
+    close();
+  }, 6 * 60 * 1000);
+});
+
+describe("Normal browser", function() {
+  beforeAll(async function() {
+    setup = async (page) =>  await page.setViewport({ width, height });
+  })
+  mainTest();
+  landscapeTest();
+  embedTest();
+
+  describe("Filtering by data_frequency", () => {
+    const project = projects[0];
+    const data_frequencySlug = paramCase(project.data_frequency);
+    const otherProject = projects.find(({ data_frequency }) => data_frequency.toLowerCase() !== project.data_frequency.toLowerCase());
+    const otherdata_frequencySlug = paramCase(otherProject.data_frequency);
+
+    test(`Checking we see ${project.name} when filtering by data_frequency ${project.data_frequency}`, async function() {
+      page = await makePage(`${appUrl}/data_frequency=${data_frequencySlug}&format=card-mode`);
+      await expect(page).toHaveElement(`//div[contains(@class, 'mosaic')]//*[text()='${project.name}']`);
+    });
+    test(`Checking we don't see ${project.name} when filtering by data_frequency ${otherProject.data_frequency}`, async function() {
+      await page.goto(`${appUrl}/data_frequency=${otherdata_frequencySlug}&format=card-mode`);
+      await expect(page).not.toHaveElement(`//div[contains(@class, 'mosaic')]//*[text()='${project.name}']`);
+    });
+    close();
+  }, 6 * 60 * 1000);
+});
+
+describe("Normal browser", function() {
+  beforeAll(async function() {
+    setup = async (page) =>  await page.setViewport({ width, height });
+  })
+  mainTest();
+  landscapeTest();
+  embedTest();
+
+  describe("Filtering by data_format", () => {
+    const project = projects[0];
+    const data_formatSlug = paramCase(project.data_format);
+    const otherProject = projects.find(({ data_format }) => data_format.toLowerCase() !== project.data_format.toLowerCase());
+    const otherdata_formatSlug = paramCase(otherProject.data_format);
+
+    test(`Checking we see ${project.name} when filtering by data_format ${project.data_format}`, async function() {
+      page = await makePage(`${appUrl}/data_format=${data_formatSlug}&format=card-mode`);
+      await expect(page).toHaveElement(`//div[contains(@class, 'mosaic')]//*[text()='${project.name}']`);
+    });
+    test(`Checking we don't see ${project.name} when filtering by data_format ${otherProject.data_format}`, async function() {
+      await page.goto(`${appUrl}/data_format=${otherdata_formatSlug}&format=card-mode`);
       await expect(page).not.toHaveElement(`//div[contains(@class, 'mosaic')]//*[text()='${project.name}']`);
     });
     close();
