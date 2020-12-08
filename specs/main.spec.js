@@ -7,10 +7,12 @@ import { projects } from '../tools/loadData';
 import { landscapeSettingsList } from "../src/utils/landscapeSettings";
 
 const devicesMap = puppeteer.devices;
+const prefix = process.env.ROUTE_BASE || '';
 const port = process.env.PORT || '4000';
-const appUrl = `http://localhost:${port}`;
+const appUrl = `http://localhost:${port}/${prefix}`;
 const width = 1920;
 const height = 1080;
+console.log("Connecting to URL "+appUrl+" at "+width+" x "+ height);
 
 let setup;
 let browser;

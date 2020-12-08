@@ -39,7 +39,7 @@
     "quick-build": "babel-node tools/build.js && yarn copy-dist && yarn setup-robots",
     "prerender": "babel-node tools/prerender",
     "build-only": "((yarn fetch && yarn clean-dist && echo 'about to build' && babel-node tools/build.js && echo 'about to copy' && yarn copy-dist && yarn setup-robots && yarn stop-old-ci && yarn start-ci && babel-node tools/parallelWithRetry check-landscape render-landscape) || (yarn stop-old-ci && false)) && babel-node tools/parallelWithRetry prerender && yarn stop-ci",
-    "build": "((yarn fetch && yarn clean-dist && babel-node tools/build.js && yarn copy-dist && yarn setup-robots && yarn stop-old-ci && yarn start-ci && babel-node tools/parallelWithRetry integration-test check-landscape render-landscape funding) || (yarn stop-old-ci && false)) && babel-node tools/parallelWithRetry prerender && babel-node tools/parallelWithRetry integration-test && yarn stop-ci",
+    "build": "((yarn fetch && yarn clean-dist && echo 'about to build' && babel-node tools/build.js && echo 'about to copy' && yarn copy-dist && yarn setup-robots && yarn stop-old-ci && yarn start-ci && babel-node tools/parallelWithRetry integration-test check-landscape render-landscape) || (yarn stop-old-ci && false)) && babel-node tools/parallelWithRetry prerender && babel-node tools/parallelWithRetry integration-test && yarn stop-ci",
     "show-report": "open dist/report.html",
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
     "latest": "yarn",
