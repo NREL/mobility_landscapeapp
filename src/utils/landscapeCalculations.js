@@ -2,8 +2,8 @@ import settings from 'project/settings.yml'
 import fields from "../types/fields";
 
 export const itemMargin = 3
-export const smallItemWidth = 51
-export const smallItemHeight = 45
+export const smallItemWidth = 43
+export const smallItemHeight = 38
 export const largeItemWidth = 2 * smallItemWidth + itemMargin
 export const largeItemHeight = 2 * smallItemHeight + itemMargin
 export const subcategoryMargin = 6
