@@ -128,7 +128,7 @@ const fields = {
   },
   item_type: {
     id: 'item_type',
-    label: 'Item Type',
+    label: 'Availability',
     isArray: true,
     values: [].concat(unpack(lookups.item_type) || []),
     filterFn: function(filter, value) {
